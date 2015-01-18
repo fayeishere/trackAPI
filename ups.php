@@ -1,9 +1,10 @@
 <?php
 
   //Configuration
-  // $access = "";
-  // $userid = "";
-  // $passwd = "";
+  $access = "";
+  $userid = "";
+  $passwd = "";
+
   $wsdl = "track.wsdl";
   $operation = "ProcessTrack";
   $endpointurl = 'https://onlinetools.ups.com/webservices/Track';

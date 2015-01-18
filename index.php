@@ -1,7 +1,7 @@
 <?
 
 
-require_once('ups.php');
+require_once('trackingConfig.php');
 
 ?>
 
@@ -173,7 +173,7 @@ require_once('ups.php');
       </td>
       <td class="nowrap" id="date1">01/08/2015</td>
       <td class="nowrap" id="time1">8:31 A.M.</td>
-      <td>Out for Delivery</td>
+      <td id="descr1">Out for Delivery</td>
 
       <td class="nowrap" id="trailer1">
         929539
@@ -364,6 +364,7 @@ require_once('ups.php');
 <!-- / footer -->
 
 <script type="text/javascript">
+  // This will not work with different APIs - should be done in PHP file or something
 	var jsonObj = '<?=$json?>';
 	var obj = JSON.parse(jsonObj).Shipment;
 	console.log(obj);
