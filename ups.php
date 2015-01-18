@@ -1,9 +1,9 @@
 <?php
 
   //Configuration
-  $access = "";
-  $userid = "";
-  $passwd = "";
+  // $access = "";
+  // $userid = "";
+  // $passwd = "";
 
   $wsdl = "track.wsdl";
   $operation = "ProcessTrack";
