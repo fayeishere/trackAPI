@@ -1,14 +1,24 @@
 <?php
 
+  require_once('./APIconfig.php.inc');
   //Configuration
-  // $access = "";
-  // $userid = "";
-  // $passwd = "";
+  $access = UPSaccess;
+  $userid = UPSuserid;
+  $passwd = UPSpasswd;
 
   $wsdl = "track.wsdl";
   $operation = "ProcessTrack";
   $endpointurl = 'https://onlinetools.ups.com/webservices/Track';
   $outputFileName = "XOLTResult.xml";
+
+  if( empty($_GET['id']) ){
+    // fail gracefully
+    header("HTTP/1.1 404 OK");
+    header('Content-Type: application/json');
+    $json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
+    echo $json;
+    exit();
+  }
 
   function processTrack()
   {
@@ -17,7 +27,7 @@
     $tref['CustomerContext'] = 'Add description here';
     $req['TransactionReference'] = $tref;
     $request['Request'] = $req;
-    $request['InquiryNumber'] = '576235903';
+    $request['InquiryNumber'] = $_GET['id'];
  	  $request['TrackingOption'] = '02';
 
     // echo "Request.......\n";
@@ -58,50 +68,12 @@
   	$resp = $client->__soapCall($operation ,array(processTrack()));
 
     //get status
-    // echo "Response Status: " . $resp->Response->ResponseStatus->Description ."\n";
+    // echo "Response Status: " . $resp->Response->ResponseStatus->Description ."\n";    
 
-$xml = $client->__getLastResponse();
-// header('Content-Type: text/xml');
-// print_r($xml);
-$json = json_encode($resp);
-// $jsonObj = json_encode((array)$resp );
-// $array = json_decode($json,TRUE);
-
-//     //save soap request and response to file
-//     $xml = $client->__getLastResponse();
-
-
-// $p = xml_parser_create();
-// xml_parse($p,$xml,true);
-
-// xml_parse_into_struct($p, $xml, $vals, $index);
-// xml_parser_free($p);
-// echo "Index array\n";
-// print_r($index);
-// echo "\nVals array\n";
-// print_r($vals);
-
-
-
-
-    // echo $xml;
-
-    // $xml = simplexml_load_string($client->__last_response);
-    // if ($xml === false) {
-    //     echo "Failed loading XML: ";
-    //     foreach(libxml_get_errors() as $error) {
-    //         echo "<br>", $error->message;
-    //     }
-    // } else {
-    //     print_r($xml);
-    // }
-
-    // header('Content-Type: application/json');
-    // echo json_encode($client);
-    // $fw = fopen($outputFileName , 'w');
-    // fwrite($fw , "Request: \n" . $client->__getLastRequest() . "\n");
-    // fwrite($fw , "Response: \n" . $client->__getLastResponse() . "\n");
-    // fclose($fw);
+    header("HTTP/1.1 200 OK");
+    header('Content-Type: application/json');
+    $json = json_encode($resp);
+    echo $json;
 
   }
   catch(Exception $ex)

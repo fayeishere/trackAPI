@@ -69,7 +69,7 @@
 
         $.ajax({
           dataType: "json",
-          url: "http://localhost:8000/ups.php",
+          url: "http://localhost:8000/ups.php?id="+carrierTrackingID,
           success: function(data){ 
               console.log('getJSON called and succeeded');  
 
