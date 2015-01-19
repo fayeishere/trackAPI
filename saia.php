@@ -1,10 +1,6 @@
 <?php
-
-// Switch if carrier is UPS run ups.php etc and set tracking number from form
-	require "ups.php";
-
-	// just fucking around with nonsense
-
+// SAIA - needs a customer password to call API
+/*
 	// http://www.saiasecure.com/webservice/shipment/soap.asmx?op=GetByPONumber
 	$thiswsdl = "trace.wsdl";
 	$end = "http://www.saiasecure.com/tracing/b_manifest.asp?link=y&pro=00847009743600";
@@ -15,5 +11,5 @@
     );
 	$thisclient = new SoapClient($thiswsdl , $thismode);
 	$thisclient->__setLocation($end);
-
+*/
 ?>
