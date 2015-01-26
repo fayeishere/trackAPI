@@ -30,11 +30,6 @@
   $userid = SAIAuserid;
   $passwd = SAIApasswd;
 
-  $wsdl = 'http://www.saiasecure.com/webservice/shipment/soap.asmx?wsdl'; // case sensitive!
-
-  $operation = "GetByPONumber"; // ?op=GetByPONumber
-  $endpointurl = 'http://www.saiasecure.com/webservice/shipment/soap.asmx';
-
   if( empty($_GET['id']) ){
     // fail gracefully
     header("HTTP/1.1 404 OK");
