@@ -93,8 +93,11 @@
               /*
                   proDate, statusCode, status, destAddress, destState, destCity, destZip
               */
-              carrierLocation = data.getTraceDataReturn.destAddress + ", " + data.getTraceDataReturn.destCity + " " + data.getTraceDataReturn.destState;
-              carrierETD = data.getTraceDataReturn.proDate;
+              carrierLocation = data.getTraceDataReturn.destAddress + ", " + data.getTraceDataReturn.destCity + " " + data.getTraceDataReturn.destState;              
+
+              if( data.getTraceDataReturn.status == 'Delivered' ) carrierATD = data.getTraceDataReturn.proDate;
+              else carrierETD = data.getTraceDataReturn.proDate;
+
               carrierStatus = data.getTraceDataReturn.status;
               drawCarrierActivity();
             },
@@ -127,7 +130,7 @@
         $('#carrierETD').text( carrierETD + " (estimated) ");
       }
       if( carrierATD ){
-        $('#carrierATD').text( carrierATD + " (actual) ");        
+        $('#carrierETD').text( carrierATD + " (actual) ");        
       }
       if( carrierLocation ){
         $('#carrierLocation').text( carrierLocation );        
