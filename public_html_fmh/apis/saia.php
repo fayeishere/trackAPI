@@ -11,5 +11,66 @@
     );
 	$thisclient = new SoapClient($thiswsdl , $thismode);
 	$thisclient->__setLocation($end);
+
+
+	DOCUMENTATION
+	http://www.saiasecure.com/webservice/shipment/n_GetByProNumber.asp
+
+	WSDL: http://www.saiasecure.com/webservice/shipment/soap.asmx?wsdl
+
+	Saia's Pro number is 11 digits long containing only numbers with no dashes or check-digits. The entry value for the below example would be: 00410252280
+	http://www.saiasecure.com/tracing/n_manifest.asp?link=y&pro=(pronumber)
+	sample pro number: 00410252280 
+
+	ACCOUNT STATUS: don't have an SAIA account, so opened one & found that it'll take 2 business days, so will see if FMP has one hiding somewhere to use instead
 */
+
+  require_once('./APIconfig.php.inc');
+  //Configuration
+  $userid = SAIAuserid;
+  $passwd = SAIApasswd;
+
+  $wsdl = 'http://www.saiasecure.com/webservice/shipment/soap.asmx?wsdl'; // case sensitive!
+
+  $operation = "GetByPONumber"; // ?op=GetByPONumber
+  $endpointurl = 'http://www.saiasecure.com/webservice/shipment/soap.asmx';
+
+  if( empty($_GET['id']) ){
+  	$trackid = '00410252280'; // testing
+  	$trackid = '00821019620';
+
+    // fail gracefully
+    // header("HTTP/1.1 404 OK");
+    // header('Content-Type: application/json');
+    // $json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
+    // echo $json;
+    // exit();
+  }
+  else $trackid = $_GET['id'];
+
+  try
+  {
+    // initialize soap client
+  	$client = new SoapClient("http://www.saiasecure.com/webservice/shipment/soap.asmx?wsdl");
+
+	$resp = $client->GetByProNumber( array('request' => array(
+  		'UserID' => $userid,
+  		'Password' => $passwd,
+  		'TestMode' => 'Y',
+  		'ProNumber' => $trackid ))
+	);
+    //get status
+    // echo "Response Status: " . $resp->Response->ResponseStatus->Description ."\n";    
+
+    header("HTTP/1.1 200 OK");
+    header('Content-Type: application/json');
+    $json = json_encode($resp);
+    echo $json;
+
+  }
+  catch(Exception $ex)
+  {
+  	print_r ($ex);
+  }
+
 ?>

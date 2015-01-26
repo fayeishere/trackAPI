@@ -3,7 +3,10 @@
   /* config file out of source code management */
 
   define('UPSaccess', "");
-  define('UPSuserid', "");
+  define('UPSuserid', "GR-UPS");
   define('UPSpasswd', "");
+
+  define('SAIAuserid', "FMHSAIA");
+  define('SAIApasswd', "");
 
 ?>
