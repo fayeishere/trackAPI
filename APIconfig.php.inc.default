@@ -1,9 +1,0 @@
-<?php
-
-  /* config file out of source code management */
-
-  define('UPSaccess', "");
-  define('UPSuserid', "");
-  define('UPSpasswd', "");
-
-?>
