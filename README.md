@@ -1,5 +1,18 @@
 # tracking
 
+# Local Development
+
+`cd public_html_fmh`
+`php -S localhost:8000`
+
+Then, go to http://localhost:8000/localtest.php
+
+to run a local test.
+
+# To Publish
+
+Send new `apis/*` files and updated `apis.js` to client, who will upload them to the server.
+(First time, will need to update status.php to include call to apis.js instead of embedded code.)
 
 Time Tracking
 
