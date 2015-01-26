@@ -33,20 +33,22 @@
     var activityRows = [];
     console.log( "carrierTrackingID: ", carrierTrackingID, "carrierName: ", carrierName );
 
-    function carrierCheckError(){
+    function carrierCheckError(tracklink){
       // display a nice error...
       $('#carrierStatus').text('Unknown');
+      $('.unknown').hide();
+      if( tracklink ){
+        console.log('do something');
+        // if there's a manuall tracking link, output it here
+      }
     }
 
     switch(carrierName){
       case "UPS Freight":
-
         $.ajax({
           dataType: "json",
           url: APIscriptsURLbase + "ups.php?id="+carrierTrackingID,
           success: function(data){ 
-              console.log('getJSON called and succeeded');  
-
               for( var i = 0; i < data.Shipment.Activity.length; i++ ){
                 row = data.Shipment.Activity[i];
                 // row: activtyLocation (City, StateProvinceCode), Description, Date, Time, Trailer
@@ -80,14 +82,25 @@
             },
           error: carrierCheckError 
         });
+        break;
 
-      break;
-
-      // add other carrier handling here
+      case "Saia":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "saia.php?id="+carrierTrackingID,
+          success: function(data){ 
+              console.log(data.GetByProNumberResult);  
+              carrierCheckError(); // not ready to draw the results yet
+              // drawCarrierActivity();
+            },
+          error: carrierCheckError 
+        });
+        break;
 
       default:
+        carrierCheckError();
         // handle error & the unknown
-      break;
+        break;
     }
 
     function drawCarrierActivity(){

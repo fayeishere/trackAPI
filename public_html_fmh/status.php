@@ -174,10 +174,10 @@
         <li><span class="title">Status: </span> <span id="carrierStatus">checking...</span></li>
 
         <li><span class="title">Tracking #:</span> <span id="carrierTrackingID"><?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('ltl_tracking', 0, $record, true, 'EDITTEXT', 'text')))?></span></li>
-        <li><span class="title">Location:</span> <span id="carrierLocation"></span></li>
+        <li><span class="title unknown">Location:</span> <span id="carrierLocation"></span></li>
 
         <li><span class="title">&nbsp;</span></li>
-        <li><span class="title">Delivery Date:</span> <span id="carrierETD"></span></li>
+        <li><span class="title unknown">Delivery Date:</span> <span id="carrierETD"></span></li>
 
         <li><span class="title">&nbsp;</span></li>
         <li><span class="title">&nbsp;</span></li>

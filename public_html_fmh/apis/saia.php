@@ -36,15 +36,12 @@
   $endpointurl = 'http://www.saiasecure.com/webservice/shipment/soap.asmx';
 
   if( empty($_GET['id']) ){
-  	$trackid = '00410252280'; // testing
-  	$trackid = '00821019620';
-
     // fail gracefully
-    // header("HTTP/1.1 404 OK");
-    // header('Content-Type: application/json');
-    // $json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
-    // echo $json;
-    // exit();
+    header("HTTP/1.1 404 OK");
+    header('Content-Type: application/json');
+    $json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
+    echo $json;
+    exit();
   }
   else $trackid = $_GET['id'];
 

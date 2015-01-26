@@ -5,14 +5,23 @@
 `cd public_html_fmh`
 `php -S localhost:8000`
 
-Then, go to http://localhost:8000/localtest.php
+Then, go to one of the following to browse and test locally:
 
-to run a local test.
+* http://localhost:8000/localtest-ups.php
+ * http://localhost:8000/apis/ups.php?id=576235903
+* http://localhost:8000/localtest-saia.php
+ * http://localhost:8000/apis/saia.php?id=00821019620
+* http://localhost:8000/localtest-olddom.php
+
 
 # To Publish
 
-Send new `apis/*` files and updated `apis.js` to client, who will upload them to the server.
-(First time, will need to update status.php to include call to apis.js instead of embedded code.)
+Send updates to client, to upload to the server.
+
+* FIRST TIME ONLY: update status.php to pull out embedded JS and instead link to `apis.js` & add `unknown` classes
+* update `apis.js`
+* new/updated `apis/*` files
+* update APIconfig.php.inc with new account credentials
 
 # Options
 
