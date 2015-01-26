@@ -84,6 +84,24 @@
         });
         break;
 
+      case "Old Dominion":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "olddom.php?id="+carrierTrackingID,
+          success: function(data){ 
+              console.log(data.getTraceDataReturn);  
+              /*
+                  proDate, statusCode, status, destAddress, destState, destCity, destZip
+              */
+              carrierLocation = data.getTraceDataReturn.destAddress + ", " + data.getTraceDataReturn.destCity + " " + data.getTraceDataReturn.destState;
+              carrierETD = data.getTraceDataReturn.proDate;
+              carrierStatus = data.getTraceDataReturn.status;
+              drawCarrierActivity();
+            },
+          error: carrierCheckError 
+        });
+        break;
+
       case "Saia":
         $.ajax({
           dataType: "json",
@@ -110,6 +128,9 @@
       }
       if( carrierATD ){
         $('#carrierATD').text( carrierATD + " (actual) ");        
+      }
+      if( carrierLocation ){
+        $('#carrierLocation').text( carrierLocation );        
       }
 
       // process activity ... most recent is first
