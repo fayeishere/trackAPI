@@ -39,5 +39,10 @@ These are the values we can expect to come in from the `ltl_carrier` field of th
 
 Time Tracking
 
-* 2 - 1/17/2015, jewel - initial mtg, mockups and project agreement
-* 2.25 - 1/18/2015, jewel - build on faye's awesome work, making parsing dynamic 
+* WEEK 1 TOTAL: 10 hrs on 1/18
+ * 2 - 1/17/2015, jewel - initial mtg, mockups and project agreement
+ * 2.25 - 1/18/2015, jewel - build on faye's awesome work, making parsing dynamic 
+ * 1.75 - onsite, deployment prep & code cleanup, jewel
+ * 4 - research, ups & saia starts, testing, faye
+* WEEK 2 TOTAL: 4.5 hrs on 1/25
+ * 4.5 - 1/25, jewel - SAIA and Old Dominion setup, waiting on SAIA account setup
