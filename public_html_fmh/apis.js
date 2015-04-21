@@ -246,6 +246,30 @@
         });
         break;
 
+      case "New England MF":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "nemf.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' (a table)
+                'status' (long string w/signage info)
+             */
+              carrierStatus = data.status;
+              activityTable = data.shipment_history;
+              drawCarrierActivity();
+              $('.unknown').hide();
+            }
+          },
+          error: carrierCheckError 
+        });
+        break;
+
       default:
         carrierCheckError();
         // handle error & the unknown
@@ -257,9 +281,11 @@
       $('#carrierStatus').text( carrierStatus );
       if( carrierETD ){        
         $('#carrierETD').text( carrierETD + " (estimated/due) ");
+        $('.unknown').removeClass('unknown');
       }
       if( carrierATD ){
         $('#carrierETD').text( carrierATD + " (actual) ");        
+        $('.unknown').removeClass('unknown');
       }
 
       // process activity ... most recent is first
