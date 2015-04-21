@@ -18,8 +18,6 @@ else $trackid = $_GET['id'];
 
 $url = "http://etracking.cevalogistics.com/eTrackResults.aspx?sv=".$trackid."&sf=HouseWaybill&st=1&pageReferrer=ceva.com";
 $response = array();
-
-header('Content-Type: text/plain; charset=utf-8');
 $resp = file_get_contents($url);
 
 /*

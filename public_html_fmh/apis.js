@@ -210,10 +210,34 @@
                 'status' (Delivered / In Transit)
              */
               carrierStatus = data.status;
-              // if( data.status == 'Delivered' ) carrierATD = data.estimated_delivery;
-              // else 
               carrierETD = data.estimated_delivery;
               activityTable = data.shipment_history;
+              drawCarrierActivity();
+            }
+          },
+          error: carrierCheckError 
+        });
+        break;
+
+      case "Genwest":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "genwest.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' (a table)
+                'status' (long string w/signage info)
+                'current_location'
+                'delivery_date'
+             */
+              carrierATD = data.delivery_date;
+              carrierStatus = data.status;
+              carrierLocation = data.current_location;
               drawCarrierActivity();
             }
           },
