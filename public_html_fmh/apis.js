@@ -294,6 +294,41 @@
         });
         break;
 
+    case "Conway":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "conway.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              console.log(data);
+              carrierStatus = data.Status;
+              carrierETD = data.DeliveryETA;
+              carrierATD = data.Delivered;
+
+              for( var i = 0; i < data.History.length; i++ ){
+                row = data.History[i];
+                // row: activtyLocation (City, StateProvinceCode), Description, Date, Time, Trailer
+                // match this to our table, in case other api formats differ - or normalize this in the PHP
+                // location, date, time, activity, trailer
+                tablerow = {
+                  'location': row.Location,
+                  'datetime': row.Date,
+                  'activity': row.Status,
+                  'trailer': row.Details 
+                };
+                activityRows.push(tablerow); 
+              }
+
+              // activityTable = "<br><br>"+data.shipment_history;
+              drawCarrierActivity();
+            }
+          },
+          error: carrierCheckError
+        });
+        break;
 
       default:
         carrierCheckError();
@@ -325,6 +360,7 @@
         $('#carrierActivity tr:last').after('<tr><td>'+row.location+'</td><td>'+row.datetime+'</td><td>'+row.activity+'</td><td>'+row.trailer+'</td></tr>');
       }
       if( activityTable ){
+        $('<table>').html
         $('#carrierActivity').replaceWith( activityTable );
       }
 

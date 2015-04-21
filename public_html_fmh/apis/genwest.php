@@ -44,7 +44,6 @@ $response['shipment_history'] = str_replace(array('style="color: #FFFFFF"','<b>'
 		[1] = blank
 		[2] = values
 */
-header('Content-Type: text/plain; charset=utf-8');
 $keys = split('<td', html_entity_decode($parseme[0]) );
 $values = split('<td', html_entity_decode($parseme[2]) );
 

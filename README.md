@@ -57,4 +57,5 @@ Phase 1 - complete
 
 Phase 2 - in progress
 * 4/18 - 1hr initial research on new APIs: ceva, Genwest, FedEx, New England MF, Averitt, Conway, GLB, JTS, Wilson Trucking
-* 4/20 - 2hr ceva, 1.25hr genwest, .5hr NEMF + documentation, 
+* 4/20 - 2hr ceva, 1.25hr genwest, .5hr NEMF + documentation, 1hr Averitt & testing
+
