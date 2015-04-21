@@ -238,6 +238,7 @@
               carrierATD = data.delivery_date;
               carrierStatus = data.status;
               carrierLocation = data.current_location;
+              activityTable = data.shipment_history;
               drawCarrierActivity();
             }
           },
