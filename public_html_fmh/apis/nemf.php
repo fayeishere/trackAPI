@@ -28,7 +28,7 @@ $start = strpos($out, "<TABLE");
 $end = strrpos($out, "</TABLE");
 
 $out = substr($out, $start, $end-$start+8);
-$response['shipment_history'] = str_replace('<TABLE', '<TABLE WIDTH="100%" BGCOLOR="#EFEFEF"', strip_tags($out,'<TABLE><TH><TR><TD><BR><BR/>'));
+$response['shipment_history'] = str_replace('<TABLE', '<TABLE CLASS="dataTable" ID="carrierActivity" WIDTH="100%" BGCOLOR="#EFEFEF"', strip_tags($out,'<TABLE><TH><TR><TD><BR><BR/>'));
 
 $parseme = split('<TR', $out);
 /*

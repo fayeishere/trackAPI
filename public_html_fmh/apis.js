@@ -270,6 +270,31 @@
         });
         break;
 
+    case "Averitt":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "averitt.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' (a table)
+                'status' (long string w/signage info)
+             */
+              carrierStatus = data.status;
+              activityTable = "<br><br>"+data.shipment_history;
+              drawCarrierActivity();
+              $('.unknown').hide();
+            }
+          },
+          error: carrierCheckError 
+        });
+        break;
+
+
       default:
         carrierCheckError();
         // handle error & the unknown

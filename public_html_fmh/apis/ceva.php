@@ -149,7 +149,7 @@ $response['shipment_history'] = substr($result, $start+8, $end-$start-8);
 // fix table for display
 $response['shipment_history'] = str_replace('10%', '15%', $response['shipment_history']);
 $response['shipment_history'] = str_replace('20%', '10%', $response['shipment_history']);
-// $response['shipment_history'] = str_replace('30%', '20%', $response['shipment_history']);
+$response['shipment_history'] = str_replace('table cellSpacing="1"', 'table cellSpacing="0" CLASS="dataTable" ID="carrierActivity"', $response['shipment_history']);
 
 if( stristr($response['shipment_history'], 'Delivered') ) $response['status'] = 'Delivered';
 else $response['status'] = 'In Transit';
