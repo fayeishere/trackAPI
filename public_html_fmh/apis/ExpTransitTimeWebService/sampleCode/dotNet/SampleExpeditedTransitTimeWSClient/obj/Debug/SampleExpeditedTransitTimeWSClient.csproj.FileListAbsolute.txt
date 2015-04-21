@@ -1,0 +1,5 @@
+C:\Users\millerwe\Documents\Visual Studio 2012\Projects\SampleExpeditedTransitTimeWSClient\SampleExpeditedTransitTimeWSClient\bin\Debug\SampleExpeditedTransitTimeWSClient.exe.config
+C:\Users\millerwe\Documents\Visual Studio 2012\Projects\SampleExpeditedTransitTimeWSClient\SampleExpeditedTransitTimeWSClient\bin\Debug\SampleExpeditedTransitTimeWSClient.exe
+C:\Users\millerwe\Documents\Visual Studio 2012\Projects\SampleExpeditedTransitTimeWSClient\SampleExpeditedTransitTimeWSClient\bin\Debug\SampleExpeditedTransitTimeWSClient.pdb
+C:\Users\millerwe\Documents\Visual Studio 2012\Projects\SampleExpeditedTransitTimeWSClient\SampleExpeditedTransitTimeWSClient\obj\Debug\SampleExpeditedTransitTimeWSClient.exe
+C:\Users\millerwe\Documents\Visual Studio 2012\Projects\SampleExpeditedTransitTimeWSClient\SampleExpeditedTransitTimeWSClient\obj\Debug\SampleExpeditedTransitTimeWSClient.pdb

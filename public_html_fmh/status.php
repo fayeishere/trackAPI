@@ -1,6 +1,8 @@
 <?php
-	require_once $_SERVER['DOCUMENT_ROOT']. "/globals.php";
-	$vendor = "fmh";
+    ini_set('display_errors',0);
+
+    require_once $_SERVER['DOCUMENT_ROOT']. "/globals.php";
+    $vendor = "fmh";
 
     require_once 'fmview.php';
     require_once $_SERVER['DOCUMENT_ROOT'] .'/FileMaker.php';
@@ -92,9 +94,6 @@
   </script>
   <![endif]-->
 
-
-
-
 <?php /* --------------- START API TRACKING CODE HERE -------------------- */ ?>
 
   <style>
@@ -107,7 +106,7 @@
   <script type="text/javascript">
   var APIscriptsURLbase = 'http://www.fmhtracking.com/fmh/apis/';
   </script>
-  <script type="text/javascript" src="http://localhost:8000/apis.js"></script>
+  <script type="text/javascript" src="./apis.js"></script>
 
 <?php /* --------------- END API TRACKING CODE HERE -------------------- */ ?>
 
@@ -178,9 +177,6 @@
 
         <li><span class="title">&nbsp;</span></li>
         <li><span class="title unknown">Delivery Date:</span> <span id="carrierETD"></span></li>
-
-        <li><span class="title">&nbsp;</span></li>
-        <li><span class="title">&nbsp;</span></li>
         </ul>
 
         <table id="carrierActivity" border="0" cellpadding="0" cellspacing="0" class="dataTable hidden">
@@ -193,14 +189,14 @@
       </div>
 
       <div class="status_info">
-        <h3>Delivery Agent to Customer:</h3>
+        <h3>Delivery Agent to Customer</h3>
         <ul>  
         <li><span class="title">Name: </span><?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('delivery_agents::company', 0, $record, true, 'EDITTEXT', 'text')))?></li>
 	<!--<li><span class="title">ETA to Agent:       </span><a href="<?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('date_inprocess', 0, $record, false, 'EDITTEXT', 'text')))?>"target="_blank">Track Arrival Date</a></li>-->
 	  <!--<li><span class="title">Tracking #</label> <input name="" type="href" value="<?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('date_inprocess', 0, $record, false, 'EDITTEXT', 'text')))?>" class="input_item" /></li>-->
           <li><span class="title">ETA to Agent:     </span><?php echo displayDate(storeFieldNames('date_inprocess', 0, $record, true, 'EDITTEXT', 'date'), $displayDateFormat)?></li>
           <li><span class="title">Location: </span><?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('delivery_agents::city', 0, $record, true, 'EDITTEXT', 'text')))?><span class="title">, </span><?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('delivery_agents::state', 0, $record, true, 'EDITTEXT', 'text')))?></li>
-          <li><span class="title">Arrived at Agent: </span><?php echo displayDate(storeFieldNames('date_arrived', 0, $record, true, 'EDITTEXT', 'date'), $displayDateFormat)?></li>
+          <li><span class="title">Arrived at Agent: </span><span id="arrivedAtAgent"><?php echo displayDate(storeFieldNames('date_arrived', 0, $record, true, 'EDITTEXT', 'date'), $displayDateFormat)?></span></li>
           <li><span class="title">Phone: </span><?php echo nl2br(str_replace('', '&nbsp; ', storeFieldNames('delivery_agents::phone', 0, $record, true, 'EDITTEXT', 'text')))?></li>
           <li><span class="title">Scheduled Date:   </span><?php echo displayDate(storeFieldNames('date_scheduleddelivery', 0, $record, true, 'EDITTEXT', 'date'), $displayDateFormat)?></li>
           <li></li>

@@ -27,18 +27,26 @@ Send updates to client, to upload to the server.
 
 These are the values we can expect to come in from the `ltl_carrier` field of the File Maker Pro database. The value is written to the `#carrierName` div.
 
-* UPS Freight (done)
-* Saia
-* Old Dominion
-* Yellow Freight
+* UPS Freight (done) -  `UPS Freight`
+* Saia (done) - `Saia`
+* Old Dominion (done) - `Old Dominion`
+* Yellow Freight (done) - `Yellow Freight`
+* ABF (done) - `ABF`
+* ceva - `ceva` - http://www.cevalogistics.com/en-US/toolsresources/Pages/CEVATrak.aspx?sv
+* Genwest - `Genwest` - http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
+* FedEx - `FedEx` - https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber
+* New England MF - `New England MF` - http://nemfweb.nemf.com/shptrack.nsf/request?openagent=1&pro=16033606&submit=Track
+* Averitt - `Averitt` - https://www.averittexpress.com/action/trackingDetails?orderId=0742649691&serviceType=LTL
+* Conway - `Conway` - https://www.con-way.com/webapp/manifestrpts_p_app/Tracking/TrackingRS.jsp?PRO=
+* GLB - `GLB` - http://glbtrucking.com/TrackingCentral.aspx?hawb
+* JTS - `JTS` - http://www.jtsexpress.com/cgi-bin/wbprotrk?wbfbnumber=545323&idbutton=Submit
+* Wilson Trucking - `Wilson Trucking` - http://www.wilsontrucking.com/WilsonWeb/ED167W/ED167Win.jsp
 * Roadrunner
-* FedEx
 * Use Stock
-* ABF
-* Conway
 
 Time Tracking
 
+Phase 1 - complete
 * WEEK 1 TOTAL: 10 hrs on 1/18
  * 2 - 1/17/2015, jewel - initial mtg, mockups and project agreement
  * 2.25 - 1/18/2015, jewel - build on faye's awesome work, making parsing dynamic 
@@ -46,3 +54,7 @@ Time Tracking
  * 4 - research, ups & saia starts, testing, faye
 * WEEK 2 TOTAL: 4.5 hrs on 1/25
  * 4.5 - 1/25, jewel - SAIA and Old Dominion setup, waiting on SAIA account setup
+
+Phase 2 - in progress
+* 4/18 - 1hr initial research on new APIs: ceva, Genwest, FedEx, New England MF, Averitt, Conway, GLB, JTS, Wilson Trucking
+* 4/20 - 

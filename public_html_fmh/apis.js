@@ -31,16 +31,25 @@
     var carrierETD = ''; // estimated date/time of delivery
     var carrierATD = ''; // actual date/time of delivery
     var activityRows = [];
-    console.log( "carrierTrackingID: ", carrierTrackingID, "carrierName: ", carrierName );
+    var activityTable = ''; // if we get result as a full table, just use it!
+    // console.log( "carrierTrackingID: ", carrierTrackingID, "carrierName: ", carrierName );
 
-    function carrierCheckError(tracklink){
+    function carrierCheckError(tracklink,carrierName){
       // display a nice error...
-      $('#carrierStatus').text('Unknown');
-      $('.unknown').hide();
-      if( tracklink ){
-        console.log('do something');
-        // if there's a manuall tracking link, output it here
+      if( $('#arrivedAtAgent').text() != "" ){
+        $('#carrierStatus').text('Delivered');
       }
+      else{
+        $('#carrierStatus').text('In Transit');
+        /* we don't want to link out
+        if( typeof tracklink != 'undefined' ){
+          $('#carrierStatus').replaceWith('<span id="carrierStatus">In Transit. <a target="_blank" href="'+tracklink+'">Check '+carrierName+'.</a></span>');
+        }else{
+          $('#carrierStatus').text('Unknown');
+        }
+        */
+      }
+      $('.unknown').hide();
     }
 
     switch(carrierName){
@@ -84,12 +93,40 @@
         });
         break;
 
+      case "ABF":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "abf.php?id="+carrierTrackingID,
+          success: function(data){ 
+              if( typeof data.SHIPMENTS != 'undefined' ){
+                // we have a shipment we can display info for
+                // however, we're getting a limited amount of info, due to our account type so streamlining it
+                row = data.SHIPMENTS;
+                // carrierStatus = row.SHIPMENT.LONGSTATUS; // 011 = delivered
+                // carrierLocation = row.SHIPMENT.CONSIGNEEADDRESS1 + ", " + row.SHIPMENT.CONSIGNEECITY + " " + row.SHIPMENT.CONSIGNEESTATE;
+                if( typeof row.SHIPMENT.PICKUP != 'object' ){
+                  carrierStatus = 'Picked Up on '+row.SHIPMENT.PICKUP;
+                  carrierETD = row.SHIPMENT.DUEDATE;
+                }
+                else{
+                  carrierStatus = 'In Transit';
+                  carrierETD = row.SHIPMENT.DUEDATE;
+                }
+                drawCarrierActivity();
+              }
+              else{
+                carrierCheckError();
+              }
+          },
+          error: carrierCheckError 
+        });
+        break;
+
       case "Old Dominion":
         $.ajax({
           dataType: "json",
           url: APIscriptsURLbase + "olddom.php?id="+carrierTrackingID,
           success: function(data){ 
-              console.log(data.getTraceDataReturn);  
               /*
                   proDate, statusCode, status, destAddress, destState, destCity, destZip
               */
@@ -110,12 +147,49 @@
           dataType: "json",
           url: APIscriptsURLbase + "saia.php?id="+carrierTrackingID,
           success: function(data){ 
-              console.log(data.GetByProNumberResult);  
-              carrierCheckError(); // not ready to draw the results yet
-              // drawCarrierActivity();
-            },
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' => $shipment_history,
+                'status' => $status,
+                'estimated_devlivery' => $ed,
+                'actual_delivery' => $ad);
+             */
+              carrierStatus = data.status;
+              if( data.status == 'Delivered' ) carrierATD = data.actual_delivery;
+              else carrierETD = data.estimated_devlivery;
+              activityTable = data.shipment_history;
+              drawCarrierActivity();
+            }
+          },
           error: carrierCheckError 
         });
+        break;
+
+      case "Yellow Freight":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "yrc.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' => $shipment_history,
+             */
+              carrierStatus = data.status;
+              activityTable = data.shipment_history;
+              carrierETD = data.estimated_devlivery;
+              drawCarrierActivity();
+            }
+          },
+          error: carrierCheckError()
+        });      
         break;
 
       default:
@@ -125,27 +199,36 @@
     }
 
     function drawCarrierActivity(){
+      console.log('writing...:'+carrierStatus);
       $('#carrierStatus').text( carrierStatus );
       if( carrierETD ){        
-        $('#carrierETD').text( carrierETD + " (estimated) ");
+        $('#carrierETD').text( carrierETD + " (estimated/due) ");
       }
       if( carrierATD ){
         $('#carrierETD').text( carrierATD + " (actual) ");        
-      }
-      if( carrierLocation ){
-        $('#carrierLocation').text( carrierLocation );        
       }
 
       // process activity ... most recent is first
       for( var i = 0; i < activityRows.length; i++ ){
         if( i == 0 ){
-          $('#carrierLocation').text( activityRows[0].location );
+          // $('#carrierLocation').text( activityRows[0].location );
+          carrierLocation = activityRows[0].location;
           $('#carrierActivity').removeClass('hidden');
         }
         row = activityRows[i];
         // append row to #carrierActivity table: location, datetime, activity, trailer
         $('#carrierActivity tr:last').after('<tr><td>'+row.location+'</td><td>'+row.datetime+'</td><td>'+row.activity+'</td><td>'+row.trailer+'</td></tr>');
       }
+      if( activityTable ){
+        $('#carrierActivity').replaceWith( activityTable );
+      }
+
+      if( carrierLocation ){
+        $('#carrierLocation').text( carrierLocation );        
+      }else{
+        $('#carrierLocation').prev().replaceWith('<span class="title">&nbsp;</span>');
+      }
+
     }
 
   });

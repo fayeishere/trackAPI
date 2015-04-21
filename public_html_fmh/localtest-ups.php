@@ -26,10 +26,10 @@
   </style>
 
   <script type="text/javascript">
-  var APIscriptsURLbase = 'http://localhost:8000/apis/';
+  var APIscriptsURLbase = 'http://localhost:8080/apis/';
   // url: "http://www.fmhtracking.com/fmh/apis/ups.php?id="+carrierTrackingID,
   </script>
-  <script type="text/javascript" src="http://localhost:8000/apis.js"></script>
+  <script type="text/javascript" src="http://localhost:8080/apis.js"></script>
 
 <?php /* --------------- END HERE -------------------- */ ?>
 

@@ -26,10 +26,10 @@
   </style>
 
   <script type="text/javascript">
-  var APIscriptsURLbase = 'http://localhost:8000/apis/';
+  var APIscriptsURLbase = 'http://localhost:8080/apis/';
   // url: "http://www.fmhtracking.com/fmh/apis/ups.php?id="+carrierTrackingID,
   </script>
-  <script type="text/javascript" src="http://localhost:8000/apis.js"></script>
+  <script type="text/javascript" src="http://localhost:8080/apis.js"></script>
 
 <?php /* --------------- END HERE -------------------- */ ?>
 
@@ -126,10 +126,10 @@
         <li><span class="title">&nbsp;</span></li>
         <li><span class="title">&nbsp;</span></li>
 
-        <li><span class="title">Carrier:</span> <span id="carrierName">SAIA</span></li>
+        <li><span class="title">Carrier:</span> <span id="carrierName">Saia</span></li>
         <li><span class="title">Status: </span> <span id="carrierStatus">checking...</span></li>
 
-        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">00821019780</span></li>
+        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">00847009587433</span></li>
         <li><span class="title unknown">Location:</span> <span id="carrierLocation"></span></li>
 
         <li><span class="title">&nbsp;</span></li>

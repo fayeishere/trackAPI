@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://time.odfl.com/" version="1.0" xmlns:tns="http://time.odfl.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="getTT" type="tns:getTT"/>
+
+  <xs:element name="getTTResponse" type="tns:getTTResponse"/>
+
+  <xs:complexType name="getTT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:timeRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="timeRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="billToAcct" type="xs:string"/>
+      <xs:element minOccurs="0" name="destZip" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgZip" type="xs:string"/>
+      <xs:element minOccurs="0" name="pickUpDateYMD" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getTTResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:timeResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="timeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="delvDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="delvDay" type="xs:string"/>
+      <xs:element minOccurs="0" name="delvTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="destSrvCntr" type="xs:string"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element minOccurs="0" name="orgSrvCntr" type="xs:string"/>
+      <xs:element name="success" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

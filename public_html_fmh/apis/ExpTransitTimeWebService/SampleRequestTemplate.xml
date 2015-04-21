@@ -1,0 +1,18 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:time="http://time.odfl.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <time:getTT>
+         <!--Optional:-->
+         <arg0>
+            <!--Optional:-->
+            <billToAcct>?</billToAcct>
+            <!--Optional:-->
+            <destZip>?</destZip>
+            <!--Optional:-->
+            <orgZip>?</orgZip>
+            <!--Optional:-->
+            <pickUpDateYMD>?</pickUpDateYMD>
+         </arg0>
+      </time:getTT>
+   </soapenv:Body>
+</soapenv:Envelope>

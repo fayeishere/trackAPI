@@ -9,4 +9,6 @@
   define('SAIAuserid', "FMHSAIA");
   define('SAIApasswd', "");
 
+  define('ABFsecureid', "");
+
 ?>
