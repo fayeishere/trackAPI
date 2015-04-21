@@ -91,7 +91,7 @@
     $result = array(
       'shipment_history' => $shipment_history,
       'status' => $status,
-      'estimated_devlivery' => $ed,
+      'estimated_delivery' => $ed,
       'actual_delivery' => $ad);
 
     header("HTTP/1.1 200 OK");

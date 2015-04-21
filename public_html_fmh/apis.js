@@ -155,12 +155,12 @@
                 values we get back:
                 'shipment_history' => $shipment_history,
                 'status' => $status,
-                'estimated_devlivery' => $ed,
+                'estimated_delivery' => $ed,
                 'actual_delivery' => $ad);
              */
               carrierStatus = data.status;
               if( data.status == 'Delivered' ) carrierATD = data.actual_delivery;
-              else carrierETD = data.estimated_devlivery;
+              else carrierETD = data.estimated_delivery;
               activityTable = data.shipment_history;
               drawCarrierActivity();
             }
@@ -184,12 +184,41 @@
              */
               carrierStatus = data.status;
               activityTable = data.shipment_history;
-              carrierETD = data.estimated_devlivery;
+              carrierETD = data.estimated_delivery;
               drawCarrierActivity();
             }
           },
           error: carrierCheckError()
         });      
+        break;
+
+      case "ceva":
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "ceva.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.status == '' ){
+              carrierCheckError();
+            }
+            else{
+              /*
+                values we get back:
+                'shipment_history' (a table)
+                'ship_date'
+                'estimated_delivery'
+                'delivery_type'
+                'status' (Delivered / In Transit)
+             */
+              carrierStatus = data.status;
+              // if( data.status == 'Delivered' ) carrierATD = data.estimated_delivery;
+              // else 
+              carrierETD = data.estimated_delivery;
+              activityTable = data.shipment_history;
+              drawCarrierActivity();
+            }
+          },
+          error: carrierCheckError 
+        });
         break;
 
       default:

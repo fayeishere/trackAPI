@@ -80,7 +80,7 @@ $shipment_history = '<table>
 $result = array(
   'shipment_history' => $shipment_history,
   'status' => trim(str_replace('&nbsp;', ' ', substr($s[1], 0, -10))),
-  'estimated_devlivery' => trim(str_replace('&nbsp;', ' ', strip_tags($s[2]))),
+  'estimated_delivery' => trim(str_replace('&nbsp;', ' ', strip_tags($s[2]))),
    );
 
 header("HTTP/1.1 200 OK");

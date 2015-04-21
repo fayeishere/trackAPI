@@ -27,12 +27,12 @@ Send updates to client, to upload to the server.
 
 These are the values we can expect to come in from the `ltl_carrier` field of the File Maker Pro database. The value is written to the `#carrierName` div.
 
-* UPS Freight (done) -  `UPS Freight`
-* Saia (done) - `Saia`
-* Old Dominion (done) - `Old Dominion`
-* Yellow Freight (done) - `Yellow Freight`
-* ABF (done) - `ABF`
-* ceva - `ceva` - http://www.cevalogistics.com/en-US/toolsresources/Pages/CEVATrak.aspx?sv
+* UPS Freight (done) -  `UPS Freight` `ups.php` - API, SOAP
+* Saia (done) - `Saia` `saia.php` - html scrape
+* Old Dominion (done) - `Old Dominion` `olddom.php` - SOAP/html scrape
+* Yellow Freight (done) - `Yellow Freight` `yrc.php` - html scrape
+* ABF (done) - `ABF` `abf.php` - API, XML
+* ceva (in review) - `ceva` - http://www.cevalogistics.com/en-US/toolsresources/Pages/CEVATrak.aspx?sv
 * Genwest - `Genwest` - http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
 * FedEx - `FedEx` - https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber
 * New England MF - `New England MF` - http://nemfweb.nemf.com/shptrack.nsf/request?openagent=1&pro=16033606&submit=Track
