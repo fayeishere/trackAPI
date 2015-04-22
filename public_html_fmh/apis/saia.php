@@ -22,7 +22,7 @@
 	http://www.saiasecure.com/tracing/n_manifest.asp?link=y&pro=(pronumber)
 	sample pro number: 00410252280 
 
-	ACCOUNT STATUS: don't have an SAIA account, so opened one & found that it'll take 2 business days, so will see if FMP has one hiding somewhere to use instead
+	ACCOUNT STATUS: we weren't able to get approved, as SAIA only allows you to check on the status of YOUR "orders"
 */
 
   require_once('./APIconfig.php.inc');

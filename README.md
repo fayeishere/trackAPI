@@ -32,15 +32,15 @@ These are the values we can expect to come in from the `ltl_carrier` field of th
 * Old Dominion (done) - `Old Dominion` `olddom.php` - SOAP/html scrape
 * Yellow Freight (done) - `Yellow Freight` `yrc.php` - html scrape
 * ABF (done) - `ABF` `abf.php` - API, XML
-* ceva (in review) - `ceva` - http://www.cevalogistics.com/en-US/toolsresources/Pages/CEVATrak.aspx?sv
-* Genwest - `Genwest` - http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
-* FedEx - `FedEx` - https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber
-* New England MF - `New England MF` - http://nemfweb.nemf.com/shptrack.nsf/request?openagent=1&pro=16033606&submit=Track
-* Averitt - `Averitt` - https://www.averittexpress.com/action/trackingDetails?orderId=0742649691&serviceType=LTL
-* Conway - `Conway` - https://www.con-way.com/webapp/manifestrpts_p_app/Tracking/TrackingRS.jsp?PRO=
-* GLB - `GLB` - http://glbtrucking.com/TrackingCentral.aspx?hawb
-* JTS - `JTS` - http://www.jtsexpress.com/cgi-bin/wbprotrk?wbfbnumber=545323&idbutton=Submit
-* Wilson Trucking - `Wilson Trucking` - http://www.wilsontrucking.com/WilsonWeb/ED167W/ED167Win.jsp
+* ceva (done) - `ceva` - http://www.cevalogistics.com/en-US/toolsresources/Pages/CEVATrak.aspx?sv
+* Genwest (done) - `Genwest` - http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
+* FedEx (blocked) - `FedEx` - https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber
+* New England MF (done) - `New England MF` - http://nemfweb.nemf.com/shptrack.nsf/request?openagent=1&pro=16033606&submit=Track
+* Averitt (done) - `Averitt` - https://www.averittexpress.com/action/trackingDetails?orderId=0742649691&serviceType=LTL
+* Conway (done) - `Conway` - https://www.con-way.com/webapp/manifestrpts_p_app/Tracking/TrackingRS.jsp?PRO=
+* GLB (blocked) - `GLB` - http://glbtrucking.com/TrackingCentral.aspx?hawb
+* JTS (done) - `JTS` - http://www.jtsexpress.com/cgi-bin/wbprotrk?wbfbnumber=545323&idbutton=Submit
+* Wilson Trucking (started) - `Wilson Trucking` - http://www.wilsontrucking.com/WilsonWeb/ED167W/ED167Win.jsp
 * Roadrunner
 * Use Stock
 
@@ -57,5 +57,6 @@ Phase 1 - complete
 
 Phase 2 - in progress
 * 4/18 - 1hr initial research on new APIs: ceva, Genwest, FedEx, New England MF, Averitt, Conway, GLB, JTS, Wilson Trucking
-* 4/20 - 2hr ceva, 1.25hr genwest, .5hr NEMF + documentation, 1hr Averitt & testing
+* 4/20 - 2hr ceva, 1.25hr genwest, .5hr NEMF + documentation, 1hr Averitt & testing, .5hr for Conway & testing
+* 4/21 - 1hr testing, .5hr GLB, .5hr JTS, .5hr Wilson
 

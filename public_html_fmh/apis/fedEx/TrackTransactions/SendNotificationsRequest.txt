@@ -1,0 +1,43 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <SOAP-ENV:Body>
+      <SendNotificationsRequest xmlns="http://fedex.com/ws/track/v9">
+         <WebAuthenticationDetail>
+<UserCredential>
+               <Key>Input Your Information</Key>
+               <Password>Input Your Information</Password>
+            </UserCredential>
+         </WebAuthenticationDetail>
+         <ClientDetail>
+            <AccountNumber>Input Your Information</AccountNumber>
+            <MeterNumber>Input Your Information</MeterNumber>
+            <Localization>
+               <LanguageCode>EN</LanguageCode>
+            </Localization>
+         </ClientDetail>
+         <TransactionDetail>
+            <CustomerTransactionId>SendNotificationsRequest_v9</CustomerTransactionId>
+         </TransactionDetail>
+         <Version>
+            <ServiceId>trck</ServiceId>
+            <Major>9</Major>
+            <Intermediate>1</Intermediate>
+            <Minor>0</Minor>
+         </Version>
+         <TrackingNumber>Input Your Information</TrackingNumber>
+         <TrackingNumberUniqueId>Input Your Information</TrackingNumberUniqueId>
+         <ShipDateRangeBegin>2010-03-02</ShipDateRangeBegin>
+         <ShipDateRangeEnd>2012-04-12</ShipDateRangeEnd>
+         <SenderEMailAddress>Input Your Information</SenderEMailAddress>
+         <SenderContactName>Input Your Information</SenderContactName>
+         <NotificationDetail>
+            <PersonalMessage>Message</PersonalMessage>
+            <Recipients>
+               <EMailNotificationRecipientType>SHIPPER</EMailNotificationRecipientType>
+               <EMailAddress>Input Your Information</EMailAddress>
+               <NotificationEventsRequested>ON_TENDER</NotificationEventsRequested>
+               <Format>TEXT</Format>
+ </Recipients>
+         </NotificationDetail>
+      </SendNotificationsRequest>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

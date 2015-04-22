@@ -51,7 +51,7 @@
       }
       $('.unknown').hide();
     }
-
+    console.log('carrierName',carrierName);
     switch(carrierName){
       case "UPS Freight":
         $.ajax({
@@ -225,7 +225,12 @@
           url: APIscriptsURLbase + "genwest.php?id="+carrierTrackingID,
           success: function(data){ 
             if( data.status == '' ){
+              // we're in somewhere in the transit process
+              carrierStatus = data.current_location;
               carrierCheckError();
+              // carrierLocation = data.current_location;
+              activityTable = data.shipment_history;
+              drawCarrierActivity();
             }
             else{
               /*
@@ -330,6 +335,32 @@
         });
         break;
 
+      case "JTS":
+        console.log('here');
+        $.ajax({
+          dataType: "json",
+          url: APIscriptsURLbase + "jts.php?id="+carrierTrackingID,
+          success: function(data){ 
+            if( data.success ){
+              console.log('success',data);
+              carrierStatus = "See Activity";
+              activityTable = data.shipment_history;
+              carrierCheckError();
+            }
+            else{
+              console.log('not found',data);
+              carrierStatus = "Tracking ID not found";
+              carrierCheckError();
+            }
+            drawCarrierActivity();
+          },
+          error: function(error){
+            carrierStatus = error.statusText;
+            carrierCheckError();
+          }
+        });
+        break;
+
       default:
         carrierCheckError();
         // handle error & the unknown
@@ -337,7 +368,6 @@
     }
 
     function drawCarrierActivity(){
-      console.log('writing...:'+carrierStatus);
       $('#carrierStatus').text( carrierStatus );
       if( carrierETD ){        
         $('#carrierETD').text( carrierETD + " (estimated/due) ");

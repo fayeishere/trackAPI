@@ -1,0 +1,46 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v9="http://fedex.com/ws/track/v9">
+   <soapenv:Header> </soapenv:Header>
+   <soapenv:Body>
+      <v9:TrackRequest>
+         <v9:WebAuthenticationDetail>
+<v9:UserCredential>
+               <v9:Key>Input Your Information</v9:Key>
+               <v9:Password>Input Your Information</v9:Password>
+            </v9:UserCredential>
+         </v9:WebAuthenticationDetail>
+         <v9:ClientDetail>
+            <v9:AccountNumber>Input Your Information</v9:AccountNumber>
+            <v9:MeterNumber>Input Your Information</v9:MeterNumber>
+<v9:Localization>
+               <v9:LanguageCode>EN</v9:LanguageCode>
+               <v9:LocaleCode>us</v9:LocaleCode>
+            </v9:Localization>
+         </v9:ClientDetail>
+         <v9:TransactionDetail>
+            <v9:CustomerTransactionId>Track By Reference_v9</v9:CustomerTransactionId>
+</v9:TransactionDetail>
+         <v9:Version>
+            <v9:ServiceId>trck</v9:ServiceId>
+            <v9:Major>9</v9:Major>
+            <v9:Intermediate>1</v9:Intermediate>
+            <v9:Minor>0</v9:Minor>
+         </v9:Version>
+         <v9:SelectionDetails>
+            <v9:CarrierCode>FDXE</v9:CarrierCode>
+            <v9:OperatingCompany>Input Your Information</v9:OperatingCompany>
+            <v9:PackageIdentifier>
+               <v9:Type>SHIPPER_REFERENCE</v9:Type>
+               <v9:Value>Input Your Information</v9:Value>
+            </v9:PackageIdentifier>
+            <v9:ShipDateRangeBegin>2013-09-23</v9:ShipDateRangeBegin>
+            <v9:ShipDateRangeEnd>2013-09-24</v9:ShipDateRangeEnd>
+            <v9:ShipmentAccountNumber>Input Your Information</v9:ShipmentAccountNumber>
+            <v9:Destination>
+               <v9:PostalCode>95035</v9:PostalCode>
+               <v9:CountryCode>US</v9:CountryCode>
+            </v9:Destination>
+         </v9:SelectionDetails>
+         <v9:ProcessingOptions>INCLUDE_DETAILED_SCANS</v9:ProcessingOptions>
+      </v9:TrackRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

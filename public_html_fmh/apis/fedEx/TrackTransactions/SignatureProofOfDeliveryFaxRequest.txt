@@ -1,0 +1,80 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v9="http://fedex.com/ws/track/v9">
+   <soapenv:Header></soapenv:Header>
+   <soapenv:Body>
+      <v9:SignatureProofOfDeliveryFaxRequest>
+         <v9:WebAuthenticationDetail>
+<v9:UserCredential>
+               <v9:Key>Input Your Information</v9:Key>
+               <v9:Password>Input Your Information</v9:Password>
+            </v9:UserCredential>
+         </v9:WebAuthenticationDetail>
+         <v9:ClientDetail>
+            <v9:AccountNumber>Input Your Information</v9:AccountNumber>
+            <v9:MeterNumber>Input Your Information</v9:MeterNumber>
+            <v9:Localization>
+               <v9:LanguageCode>EN</v9:LanguageCode>
+               <v9:LocaleCode>EN</v9:LocaleCode>
+            </v9:Localization>
+         </v9:ClientDetail>
+         <v9:TransactionDetail>
+            <v9:CustomerTransactionId>SignatureProofOfDeliveryFaxRequest_v9</v9:CustomerTransactionId>
+</v9:TransactionDetail>
+         <v9:Version>
+            <v9:ServiceId>trck</v9:ServiceId>
+            <v9:Major>9</v9:Major>
+            <v9:Intermediate>1</v9:Intermediate>
+            <v9:Minor>0</v9:Minor>
+         </v9:Version>
+         <v9:QualifiedTrackingNumber>
+            <v9:TrackingNumber>Input Your Information</v9:TrackingNumber>
+            <v9:ShipDate>2014-06-18</v9:ShipDate>
+            <v9:AccountNumber>Input Your Information</v9:AccountNumber>
+            <v9:Carrier>FDXE</v9:Carrier>
+            <v9:Destination>
+               <v9:StreetLines>Input Your Information</v9:StreetLines>
+               <v9:City>Texas</v9:City>
+               <v9:StateOrProvinceCode>TX</v9:StateOrProvinceCode>
+               <v9:PostalCode>73301</v9:PostalCode>
+               <v9:CountryCode>US</v9:CountryCode>
+            </v9:Destination>
+         </v9:QualifiedTrackingNumber>
+         <v9:AdditionalComments>comments</v9:AdditionalComments>
+         <v9:FaxSender>
+            <v9:Contact>
+               <v9:PersonName>Input Your Information</v9:PersonName>
+               <v9:Title>Input Your Information</v9:Title>
+               <v9:CompanyName>Input Your Information</v9:CompanyName>
+               <v9:PhoneNumber>Input Your Information</v9:PhoneNumber>
+               <v9:PhoneExtension>Input Your Information</v9:PhoneExtension>
+               <v9:FaxNumber>Input Your Information</v9:FaxNumber>
+               <v9:EMailAddress>Input Your Information</v9:EMailAddress>
+            </v9:Contact>
+            <v9:Address>
+               <v9:StreetLines>Input Your Information</v9:StreetLines>
+               <v9:City>Texas</v9:City>
+               <v9:StateOrProvinceCode>TX</v9:StateOrProvinceCode>
+               <v9:PostalCode>73301</v9:PostalCode>
+               <v9:CountryCode>US</v9:CountryCode>
+            </v9:Address>
+         </v9:FaxSender>
+         <v9:FaxRecipient>
+            <v9:Contact>
+               <v9:PersonName>Input Your Information</v9:PersonName>
+               <v9:Title>Input Your Information</v9:Title>
+               <v9:CompanyName>Input Your Information</v9:CompanyName>
+               <v9:PhoneNumber>Input Your Information</v9:PhoneNumber>
+               <v9:PhoneExtension>Input Your Information</v9:PhoneExtension>
+               <v9:FaxNumber>Input Your Information</v9:FaxNumber>
+               <v9:EMailAddress>Input Your Information</v9:EMailAddress>
+            </v9:Contact>
+            <v9:Address>
+               <v9:StreetLines>Input Your Information</v9:StreetLines>
+               <v9:City>Memphis</v9:City>
+               <v9:StateOrProvinceCode>TN</v9:StateOrProvinceCode>
+               <v9:PostalCode>39017</v9:PostalCode>
+               <v9:CountryCode>US</v9:CountryCode>
+            </v9:Address>
+         </v9:FaxRecipient>
+      </v9:SignatureProofOfDeliveryFaxRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

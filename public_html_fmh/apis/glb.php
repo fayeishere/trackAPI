@@ -1,26 +1,25 @@
 <?php
-// Genwest
+// GLB
 /*
-http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
-Sample Tracking#’s: 261800, 261835, 261753
+Sample Tracking#’s: 116748314, 1500041276, 116562101
+http://glbtrucking.com/TrackingCentral.aspx?hawb=116562101
 */
 
 if( empty($_GET['id']) ){
-	// $trackid = "261835";
+	$trackid = "116562101";
 	// fail gracefully
-	header("HTTP/1.1 404 OK");
-	header('Content-Type: application/json');
-	$json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
-	echo $json;
-	exit();
+	// header("HTTP/1.1 404 OK");
+	// header('Content-Type: application/json');
+	// $json = "{ 'Response' : 'Error', 'Message' : 'Tracking ID required.' }";
+	// echo $json;
+	// exit();
 }
 else $trackid = $_GET['id'];
-
-$url = "http://72.165.143.35:81/inssi/cobolcgi.dll?runcobol+in1ssi-gen.cob&PRO_NUM1=".$trackid;
 $response = array();
-// fields that we can get, that we care about
-$fields = array('CurrentLocation'=>'current_location','DeliveryStatus'=>'status');
+
+$url = "http://glbtrucking.com/TrackingCentral.aspx?hawb=".$trackid;
 $resp = file_get_contents($url);
+var_dump($resp); die();
 
 // chunk of interesting data is between two "hr" tags
 $start = strpos($resp, "<hr");
