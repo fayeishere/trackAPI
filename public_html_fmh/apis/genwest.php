@@ -1,7 +1,7 @@
 <?php
 // Genwest
 /*
-http://72.165.143.35:81/cgibin/in1ssi-gen-search.htm
+http://207.106.217.162:81/cgibin/in1ssi-gen-search.htm
 Sample Tracking#’s: 261800, 261835, 261753
 */
 
@@ -15,8 +15,8 @@ if( empty($_GET['id']) ){
 	exit();
 }
 else $trackid = $_GET['id'];
-
-$url = "http://72.165.143.35:81/inssi/cobolcgi.dll?runcobol+in1ssi-gen.cob&PRO_NUM1=".$trackid;
+// $url = "http://72.165.143.35:81/inssi/cobolcgi.dll?runcobol+in1ssi-gen.cob&PRO_NUM1=".$trackid;
+$url = "http://207.106.217.162:81/inssi/cobolcgi.dll?runcobol+in1ssi-gen.cob&PRO_NUM1=".$trackid;
 $response = array();
 // fields that we can get, that we care about
 $fields = array('CurrentLocation'=>'current_location','DeliveryStatus'=>'status');

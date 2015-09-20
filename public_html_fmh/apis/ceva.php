@@ -151,8 +151,17 @@ $response['shipment_history'] = str_replace('10%', '15%', $response['shipment_hi
 $response['shipment_history'] = str_replace('20%', '10%', $response['shipment_history']);
 $response['shipment_history'] = str_replace('table cellSpacing="1"', 'table cellSpacing="0" CLASS="dataTable" ID="carrierActivity"', $response['shipment_history']);
 
-if( stristr($response['shipment_history'], 'Delivered') ) $response['status'] = 'Delivered';
-else $response['status'] = 'In Transit';
+if( stristr($response['shipment_history'], 'Delivered') ){
+  $startsAt = strpos($response['shipment_history'], "Delivered");
+  $endsAt = strpos($response['shipment_history'], '<td', $startsAt);
+  $result = substr($response['shipment_history'], $endsAt+45, 9);
+  $response['actual_delivery'] = trim($result);
+  $response['status'] = 'Delivered';
+}
+else{
+  $response['actual_delivery'] = '';
+  $response['status'] = 'In Transit';
+}  
 
 header("HTTP/1.1 200 OK");
 header('Content-Type: application/json');

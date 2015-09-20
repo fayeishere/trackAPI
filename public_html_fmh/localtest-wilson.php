@@ -126,10 +126,10 @@
         <li><span class="title">&nbsp;</span></li>
         <li><span class="title">&nbsp;</span></li>
 
-        <li><span class="title">Carrier:</span> <span id="carrierName">Conway</span></li>
+        <li><span class="title">Carrier:</span> <span id="carrierName">Wilson Trucking</span></li>
         <li><span class="title">Status: </span> <span id="carrierStatus">checking...</span></li>
 
-        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">215578090--</span></li>
+        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">86814045</span></li>
         <li><span class="title unknown">Location:</span> <span id="carrierLocation"></span></li>
 
         <li><span class="title">&nbsp;</span></li>
@@ -142,7 +142,7 @@
         <table id="carrierActivity" border="0" cellpadding="0" cellspacing="0" class="dataTable hidden">
         <tbody><tr class="header">
         <th>Location</th>
-        <th width="20%">Date Time</th>
+        <th>Date Time</th>
         <th class="full">Activity</th>
         <th>Trailer</th>
         </tr></tbody></table>

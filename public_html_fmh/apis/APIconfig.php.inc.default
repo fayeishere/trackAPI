@@ -2,6 +2,9 @@
 
   /* config file out of source code management */
 
+  define('FedExKey', "");
+  define('FedExPasswd', "");
+
   define('UPSaccess', "");
   define('UPSuserid', "GR-UPS");
   define('UPSpasswd', "");

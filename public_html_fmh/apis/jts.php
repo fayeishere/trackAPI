@@ -20,7 +20,7 @@ $response = array();
 $url = "http://www.jtsexpress.com/cgi-bin/wbprotrk?idbutton=Submit&wbfbnumber=".$trackid;
 $resp = file_get_contents($url);
 
-if( stristr($resp, 'bill not found. Please try again') ){
+if( stristr($resp, 'bill not found. Please try again') || stristr($resp, 'Please enter a PRO number') ){
 	$response['success'] = false;
 	$response['status'] = 'Tracking ID not found.';
 }
@@ -64,6 +64,10 @@ else{
 */
 	$out = str_replace("<TABLE", '<TABLE CLASS="dataTable" ID="carrierActivity"', $out);
 	$response['shipment_history'] = str_replace(array('BGCOLOR="#840000"','BGCOLOR="#E7E7CF"','COLOR="#000000"','COLOR="#FFFFFF"'),'',$out);
+	if( stristr($response['shipment_history'], 'DELV') )
+		$response['status'] = 'Delivered';
+	else
+		$response['status'] = 'See activity history';		
 }
 header("HTTP/1.1 200 OK");
 header('Content-Type: application/json; charset=utf-8');

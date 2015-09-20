@@ -19,11 +19,17 @@ else $trackid = $_GET['id'];
 $url = "https://www.con-way.com/webapp/manifestrpts_p_app/shipmentTracking.do?PRO=".$trackid;
 $response = array();
 $out = file_get_contents($url);
-header('Content-Type: text/plain; charset=utf-8');
 
-$startsAt = strpos($out, "var myCustData = [") + strlen("var myCustData = [");
-$endsAt = strpos($out, "];", $startsAt);
-$out = substr($out, $startsAt, $endsAt-$startsAt);
+if( stristr($out, 'No results found') ){
+  $response['Status'] = false;
+  $response['Error'] = "Tracking ID not found.";
+  $out = json_encode($response);
+}
+else{
+  $startsAt = strpos($out, "var myCustData = [") + strlen("var myCustData = [");
+  $endsAt = strpos($out, "];", $startsAt);
+  $out = substr($out, $startsAt, $endsAt-$startsAt);
+}
 
 header("HTTP/1.1 200 OK");
 header('Content-Type: application/json; charset=utf-8');

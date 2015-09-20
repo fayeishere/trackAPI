@@ -40,19 +40,44 @@
         $('#carrierStatus').text('Delivered');
       }
       else{
-        $('#carrierStatus').text('In Transit');
-        /* we don't want to link out
-        if( typeof tracklink != 'undefined' ){
-          $('#carrierStatus').replaceWith('<span id="carrierStatus">In Transit. <a target="_blank" href="'+tracklink+'">Check '+carrierName+'.</a></span>');
+        if( carrierStatus ){
+          $('#carrierStatus').text(carrierStatus);
         }else{
-          $('#carrierStatus').text('Unknown');
+          if( typeof tracklink != 'undefined' ){
+            $('#carrierStatus').replaceWith('<span id="carrierStatus">In Transit: <a target="_blank" href="'+tracklink+'">Check '+carrierName+'.</a></span>');
+          }else{
+            $('#carrierStatus').text('In Transit');
+          }
         }
-        */
       }
       $('.unknown').hide();
     }
-    console.log('carrierName',carrierName);
+    // console.log('carrierName',carrierName);
     switch(carrierName){
+      /*
+      FedEx (Sample PO 00847003947415)
+      Main Freight (Sample PO 00847003856922) - MFTM0124033
+      USF Reddaway (Sample PO 00847002722929) - 52617536845
+      Gencom - same as Genwest - updated URL for tracking
+      Central Transport (Sample PO 00847003748610) -  41494611936 - can't automatically fill this in, but can link to window
+      Wilson Trucking (Sample PO 00847003461768) - 86814045 (old tracking number works),  2229073 (new tracking number doesn't)
+      */
+      case "FedEx":
+        carrierCheckError('https://www.fedex.com/apps/fedextrack/?action=track&cntry_code=us&trackingnumber='+carrierTrackingID,'FedEx');
+        break;
+      case "Main Freight":
+        carrierCheckError('http://www.mainfreight.com/Track/MSUSS/'+carrierTrackingID,'Main Freight');
+        break;
+      // case "USF Reddaway": need origin or destination zip code to work
+      //   carrierCheckError('http://reddawayregional.com/'+carrierTrackingID,'USF Reddaway');
+      //   break;
+      case "Central Transport":
+        carrierCheckError('http://www.centraltransportint.com/confirm/trace.aspx?_ctl0:traceNumbers='+carrierTrackingID,'Central Transport');
+        break;
+      case "Wilson Trucking":
+        carrierCheckError('http://www.wilsontrucking.com/WilsonWeb/servlet/com.wilsontrucking.mainframe.io.DirectLink?nbrPro0='+carrierTrackingID,'Wilson Trucking');
+        break;
+
       case "UPS Freight":
         $.ajax({
           dataType: "json",
@@ -192,12 +217,14 @@
         });      
         break;
 
-      case "ceva":
+      case "Ceva":
         $.ajax({
           dataType: "json",
           url: APIscriptsURLbase + "ceva.php?id="+carrierTrackingID,
           success: function(data){ 
-            if( data.status == '' ){
+            if( data.status == '' || data.ship_date.substring(0,14) == 'CEVA Logistics'){
+              // bad tracking number
+              carrierStatus = "Tracking ID not found.";
               carrierCheckError();
             }
             else{
@@ -210,7 +237,8 @@
                 'status' (Delivered / In Transit)
              */
               carrierStatus = data.status;
-              carrierETD = data.estimated_delivery;
+              carrierETD = data.estimated_delivery;              
+              carrierATD = data.actual_delivery;
               activityTable = data.shipment_history;
               drawCarrierActivity();
             }
@@ -219,6 +247,7 @@
         });
         break;
 
+      case "Gencom":
       case "Genwest":
         $.ajax({
           dataType: "json",
@@ -304,14 +333,17 @@
           dataType: "json",
           url: APIscriptsURLbase + "conway.php?id="+carrierTrackingID,
           success: function(data){ 
-            if( data.status == '' ){
+            console.log(data);
+            if( !data.Status ){
+              carrierStatus = data.Error;
               carrierCheckError();
             }
             else{
-              console.log(data);
+              // console.log(data);
               carrierStatus = data.Status;
               carrierETD = data.DeliveryETA;
-              carrierATD = data.Delivered;
+              if( data.Delivered != "false" ) carrierATD = data.Delivered;
+              else carrierATD = false;
 
               for( var i = 0; i < data.History.length; i++ ){
                 row = data.History[i];
@@ -336,20 +368,16 @@
         break;
 
       case "JTS":
-        console.log('here');
         $.ajax({
           dataType: "json",
           url: APIscriptsURLbase + "jts.php?id="+carrierTrackingID,
           success: function(data){ 
+            carrierStatus = data.status;
             if( data.success ){
-              console.log('success',data);
-              carrierStatus = "See Activity";
               activityTable = data.shipment_history;
               carrierCheckError();
             }
             else{
-              console.log('not found',data);
-              carrierStatus = "Tracking ID not found";
               carrierCheckError();
             }
             drawCarrierActivity();
@@ -374,7 +402,12 @@
         $('.unknown').removeClass('unknown');
       }
       if( carrierATD ){
-        $('#carrierETD').text( carrierATD + " (actual) ");        
+        if( $('#arrivedAtAgent').text() == '' ){
+          $('#arrivedAtAgent').text(carrierATD);
+        }
+        else{
+          $('#carrierETD').text( carrierATD + " (actual) ");
+        }
         $('.unknown').removeClass('unknown');
       }
 

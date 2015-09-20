@@ -1,4 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <title>Status: IN PROCESS</title>
@@ -78,7 +79,7 @@
  <!--   <div class="customer_support">Customer Support <span class="number">1-866-660-7800</span></div> -->
   
   </div>
-  <!-- / nav bar -->
+ <!-- / nav bar -->
   <!-- main body -->
   <div id="middle">
   
@@ -101,14 +102,14 @@
         <form action="" method="get">
           <ul>
             <li>
-              <label>Tracking #</label> <input name="" type="text" value="20150116-071618-74610307" class="input_item" /></li>
-            <li><label>Customer Name:</label> <input name="" type="text" value="SPENCER&nbsp; ARTON" class="input_item" /></li>
-            <li><label>PO # </label><input name="" type="text" value="00847009743600" class="input_item" /></li>
-            <li><label>Ship to City:</label> <input name="" type="text" value="BELMONT" class="input_item" /></li>
+              <label>Tracking #</label> <input name="" type="text" value="20150424-090517-05479457" class="input_item" /></li>
+            <li><label>Customer Name:</label> <input name="" type="text" value="Rosemary Sarsfield" class="input_item" /></li>
+            <li><label>PO # </label><input name="" type="text" value="00847002710660" class="input_item" /></li>
+            <li><label>Ship to City:</label> <input name="" type="text" value="Warren" class="input_item" /></li>
       <li>
         <label>Order Type </label><input name="" type="text" value="Delivery" class="input_item" /></li>
             <li>
-              <label>Waybill #: </label><input name="" type="text" value="" class="input_item" /></li>
+              <!--<label>Waybill #: </label><input name="" type="text" value="" class="input_item" /></li>-->
             <!--
             <li><label>date: </label><input name="" type="text" value="" class="input_item" /></li>
             <li><input type="submit" value="" class="submit" /></li>
@@ -116,85 +117,59 @@
           </ul>
         </form>
       </div>
-      <div class="floatbox">
-
+      
+      <div class="status_info">
+        <h3>Delivery Agent to Customer</h3>
+        <ul>  
+        <li><span class="title">Name: </span>Multi-Mode Logistics, LLC</li>
+  <!--<li><span class="title">ETA to Agent:       </span><a href="05/04/2015"target="_blank">Track Arrival Date</a></li>-->
+    <!--<li><span class="title">Tracking #</label> <input name="" type="href" value="05/04/2015" class="input_item" /></li>-->
+          <li><span class="title">ETA to Agent:     </span>05/04/2015</li>
+          <li><span class="title">Location: </span>Windsor Locks<span class="title">, </span>CT</li>
+          <li><span class="title">Arrived at Agent: </span><span id="arrivedAtAgent"></span></li>
+          <li><span class="title">Phone: </span>860-292-8075</li>
+          <li><span class="title">Scheduled Date:   </span></li>
+          <li></li>
+          <li><span class="title">Completion Date:  </span></li>
+    <li><span class="title"></span></li>
+    <li><span class="title">Canceled Date:    </span></li>
+        </ul>
+      </div><!--        
       </div>
 
+      </div>-->
       <div class="status_info">
-        <h3>Supplier to Delivery Agent</h3>
+
+      <div class="floatbox">  
+      </div>
+      
+      <div class="status_info">
+        <h3>Tracking to Delivery Agent</h3>
         <ul>  
         <li><span class="title">&nbsp;</span></li>
         <li><span class="title">&nbsp;</span></li>
 
-        <li><span class="title">Carrier:</span> <span id="carrierName">Conway</span></li>
-        <li><span class="title">Status: </span> <span id="carrierStatus">checking...</span></li>
+        <li><span class="title">Carrier:</span> <span id="carrierName">FedEx</span></li>
+        <li><span class="title">Status to Delivery Agent: </span> <span id="carrierStatus">checking...</span></li>
 
-        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">215578090--</span></li>
+        <li><span class="title">Tracking #:</span> <span id="carrierTrackingID">305645448-3</span></li>
         <li><span class="title unknown">Location:</span> <span id="carrierLocation"></span></li>
 
         <li><span class="title">&nbsp;</span></li>
-        <li><span class="title unknown">Delivery Date:</span> <span id="carrierETD"></span></li>
-
-        <li><span class="title">&nbsp;</span></li>
-        <li><span class="title">&nbsp;</span></li>
+        <li><span class="title unknown">ETA to Delivery Agent:</span> <span id="carrierETD"></span></li>
         </ul>
 
         <table id="carrierActivity" border="0" cellpadding="0" cellspacing="0" class="dataTable hidden">
         <tbody><tr class="header">
         <th>Location</th>
-        <th width="20%">Date Time</th>
+        <th>Date Time</th>
         <th class="full">Activity</th>
         <th>Trailer</th>
         </tr></tbody></table>
-
       </div>
 
-      <div class="status_info">
-        <h3>Delivery Agent to Customer</h3>
-        <ul>  
-
-        <li><span class="title">&nbsp;</span></li>
-        <li><span class="title">&nbsp;</span></li>
-
-        <li><span class="title">Delivery Agent: </span>Dependable&nbsp; Delivery&nbsp; Service</li>
-        <li><span class="title">Arrived at Agent: </span> </li>
-
-        <li><span class="title">Phone: </span>510-532-0828</li>
-        <li><span class="title">Scheduled Delivery: </span></li>
-
-        <li><span class="title"></span></li>
-        <li><span class="title">Completed Delivery:  </span></li>
-
-        <li><span class="title"></span></li>
-        <li><span class="title">Canceled Date:    </span></li>
-
-        </ul>
-      </div><!--        
-      </div>
-      <div class="status_info">
-        <h3>Agent and Schedule Information:</h3>
-        <ul>  
-          <li>Dependable&nbsp; Delivery&nbsp; Service</li>
-          <li><span class="title">Est. Arrival at Agent: </span></li>
-          <li><span class="title">Arrived at Agent: </span></li>
-          <li><span class="title">Scheduled Delivery: </span></li>
-          <li><span class="title">Phone: </span></li>
-          <li><span class="title">Delivery: </span></li>
-        </ul>
-      </div><!--
-      <div class="status_info">
-        <h3>Delivery Location:</h3>
-        <ul>  
-          <li><span class="title">Name: </span> SPENCER&nbsp; ARTON</li>
-          <li><span class="title">Address: </span>3438&nbsp; LODGE&nbsp; DR</li>
-          <li><span class="title">Phone: </span>650-283-0788</li>
-          <li><span class="title">City: </span>BELMONT</li>
-          <li><span class="title">Email: </span></li>
-          <li><span class="title">State: </span>CA</li>
-        </ul>
-      </div>-->
-      <div class="status_info">
-        <h3>Product Information</h3>
+      
+        <h3>Product Information:</h3>
         <table cellpadding="0" cellspacing="0" border="0" bordercolor="#d9d9d9" width="100%">
           <tr>
               <th><span class="title">Line</span></th>
@@ -206,7 +181,7 @@
                 <td>
                     1                </td>
                 <td>
-                    Travers&nbsp; 5-piece&nbsp; Fire&nbsp; Pit&nbsp; Set                </td>
+                    Moderno 6 Piece deep seating set                </td>
             </tr>
                       </table>
       </div>
